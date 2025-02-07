@@ -1,6 +1,12 @@
+def transform(input):
+    try:
+        return evaluate_safeguards_with_coverage_scores(input)
+    except Exception as e:
+        return {"error": str(e)}
+
 def evaluate_safeguards_with_coverage_scores(endpoints_response):
     """
-    Evaluates Sophos safeguard types coverage based on endpoints response data
+    Evaluates safeguard types coverage based on endpoints response data
     and assigns a score from 0 to 100 for each safeguard type.
 
     Parameters:
@@ -145,5 +151,7 @@ def evaluate_safeguards_with_coverage_scores(endpoints_response):
     # Round scores to nearest integer
     for key in coverage_scores:
         coverage_scores[key] = round(coverage_scores[key])
+
+    coverage_scores["requiredCoveragePercentage"] = coverage_scores["MDR"]
 
     return coverage_scores
