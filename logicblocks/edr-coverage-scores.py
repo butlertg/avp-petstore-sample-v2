@@ -1,9 +1,3 @@
-def transform(input):
-    try:
-        return evaluate_safeguards_with_coverage_scores(input)
-    except Exception as e:
-        return {"error": str(e)}
-
 def evaluate_safeguards_with_coverage_scores(endpoints_response):
     """
     Evaluates safeguard types coverage based on endpoints response data
@@ -155,3 +149,9 @@ def evaluate_safeguards_with_coverage_scores(endpoints_response):
     coverage_scores["requiredCoveragePercentage"] = coverage_scores["MDR"]
 
     return coverage_scores
+
+def transform(input):
+    try:
+        return evaluate_safeguards_with_coverage_scores(input)
+    except Exception as e:
+        return {"error": str(e)}
