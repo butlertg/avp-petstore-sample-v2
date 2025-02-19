@@ -51,6 +51,10 @@ def transform(endpoints_response):
         if endpoint_type == "computer" and "endpointProtection" in assigned_products:
             safeguard_counters["Endpoint Protection"] += 1
 
+        # 1.1 Endpoint Security
+        if endpoint_type == "computer" and "endpointProtection" in assigned_products:
+            safeguard_counters["Endpoint Security"] += 1
+            
         # 2. Server Protection
         if endpoint_type == "server" and "endpointProtection" in assigned_products:
             safeguard_counters["Server Protection"] += 1
